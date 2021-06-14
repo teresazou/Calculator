@@ -17,7 +17,7 @@ justify-content: center;
     font: 2em sans-serif;
 
 }
-.box{
+.keys{
     
    display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -28,20 +28,27 @@ justify-content: center;
 
 }
 .display-box{
-    padding:20px;
+    padding:10px;
     border:3px solid  white;
     align-items: center;
     height:50px;
     margin-top: 1em;
+    color:white;
+    margin-left: 450px;
+    margin-right: 450px;
 
+}
+.display{
+    color:white;
+    font-size:25px;
+    padding:6px;
 }
 
 .numbers, .operations, .numbers_0{
-    border-radius: 50%;
+    
     font-size:18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
+
 }
 .numbers{
    padding:15px 20px 15px 20px;

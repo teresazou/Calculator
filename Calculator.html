@@ -7,37 +7,163 @@
 </head>
 <body>
 <div class="title">CALCULATOR</div>
-<div class="display-box"></div>
+<div class="display-box">
+<div class="display"></div>
+</div>
 <div class="container">
     
-    <div class="box">
-        <div class="operations">C</div>
-        <div class="operations">+/-</div>
-        <div class="operations">%</div>
-        <div class="operations">÷</div>
-        <div class="numbers">1</div>
-        <div class="numbers">2</div>
-        <div class="numbers">3</div>
-        <div class="operations">x</div>
-        <div class="numbers">4</div>
-        <div class="numbers">5</div>
-        <div class="numbers">6</div>
-        <div class="operations">-</div>
-        <div class="numbers">7</div>
-        <div class="numbers">8</div>
-        <div class="numbers">9</div>
-        <div class="operations">+</div>
-        <div class="numbers_0">0</div>
-        <div class="numbers">.</div>
-        <div class="operations">=</div>
+    <div class="keys">
+        <button data-clear class="operations" onclick='deletebutton()'>C</button>
+        <button data-AC  class="operations" onclick='AC()'>AC</button>
+        <button data-negative class="operations" onclick="pos_neg()">+/-</button>
+        <button data-operation class="operations">÷</button>
+        <button data-number class="numbers">1</button>
+        <button data-number class="numbers">2</button>
+        <button data-number class="numbers">3</button>
+        <button data-operation class="operations">x</button>
+        <button data-number class="numbers">4</button>
+        <button data-number class="numbers">5</button>
+        <button data-number class="numbers">6</button>
+        <button data-operation class="operations">-</button>
+        <button data-number class="numbers">7</button>
+        <button data-number class="numbers">8</button>
+        <button data-number class="numbers">9</button>
+        <button data-operation class="operations">+</button>
+        <button data-number class="numbers_0">0</button>
+        <button data-number class="numbers">.</button>
+        <button data-equal class="operations" onclick='equalfunction()'>=</button>
         
     </div>
 </div>
 
 <script>
+const operationButtons=document.querySelectorAll('[data-operation]')
+const display=document.querySelector(".display")
+//const equalsbutton=document.querySelector('[data-equal]')
+const numberButtons=document.querySelectorAll('[data-number]')
+const clearButton=document.querySelector('[data-clear]')
+const allclearButton=document.querySelector('[data-AC]')
+var number1;
+var number2="";
+var operater1;
+var final;
 
-
+numberButtons.forEach(button =>{
     
+    button.addEventListener("click",function(e){
+if(operater1==undefined){
+    
+    if(document.querySelector(".display").innerText.includes(".")&&e.target.innerText.toString()==="."){
+        document.querySelector(".display").innerText=display.innerText.toString()
+    }else{
+    number1=display.innerText.toString()+e.target.innerText.toString()
+    document.querySelector(".display").innerText=number1
+    
+}
+
+}
+else{
+    if(final!=number1){
+    
+    if(document.querySelector(".display").innerText.includes(".")&&e.target.innerText.toString()==="."){
+        document.querySelector(".display").innerText=display.innerText.toString()
+    }else{
+    number2=number2+e.target.innerText.toString()
+    document.querySelector(".display").innerText=number2}
+ }else{
+    if(number2.includes(".")&&e.target.innerText.toString()==="."){
+        number2=number2
+    }else{
+    number2=number2+e.target.innerText.toString()
+    document.querySelector(".display").innerText=number2;
+}
+ 
+ }
+}
+}
+)
+})
+
+operationButtons.forEach(button=>{
+    button.addEventListener("click",function(e){
+        if(display.innerText!=""){
+            if(operater1==undefined){
+        operater1=e.target.innerText;
+      }
+    else{
+        if(compute()==undefined){
+            return
+        }else{
+        display.innerText=compute()}
+        final=compute()
+        number1=compute()
+        number2=""
+        operater1=e.target.innerText.toString()
+        
+         }
+}
+        else{ return }
+    })
+})
+
+
+
+function compute(){
+
+var prev_num=parseFloat(number1);
+if (number2=="")
+{var second_number=prev_num}else{
+ second_number=parseFloat(number2)}
+var prev_operater=operater1
+var result
+if(isNaN(prev_num)||isNaN(second_number)){return}
+else{
+switch(prev_operater){
+ case '+': result= prev_num+second_number
+ break;
+ case '-':result= prev_num-second_number 
+ break;
+ case 'x':result= prev_num*second_number
+ break;
+ case '÷':result=prev_num/second_number
+}
+return result
+}
+
+number2=""
+
+}
+
+
+function AC(){
+   display.innerHTML="";
+   operater1=undefined;
+   number1=""
+   number2=""
+}
+
+function deletebutton(){
+display.innerText=display.innerText.slice(0,-1);
+}
+
+function equalfunction(){
+    if(operater1!=undefined&&number1!==undefined){
+        display.innerText=compute()
+    }
+}
+
+function pos_neg(){
+    if(display.innerText===number2){
+        number2=number2*-1
+        display.innerText=number2
+    }else if(display.innerText==number1){
+        number1=number1*-1
+        display.innerText=number1
+    }
+}
+
+//need to add hover when click the operaters!
+
 </script>
 
 
