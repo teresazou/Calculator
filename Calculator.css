@@ -1,16 +1,19 @@
 html{
-    background-color: black;
+    background: #4CA1AF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #C4E0E5, #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 }
 
 .container{
-    padding:40px;
+    padding:20px;
 display:flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 }
 .title{
-    color:burlywood;
+    color:224a49b0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,13 +36,14 @@ justify-content: center;
     align-items: center;
     height:50px;
     margin-top: 1em;
-    color:white;
+    color:black;
     margin-left: 450px;
     margin-right: 450px;
+    background-color: #c2e59c;
 
 }
 .display{
-    color:white;
+    color:black;
     font-size:25px;
     padding:6px;
 }
@@ -52,19 +56,22 @@ justify-content: center;
 }
 .numbers{
    padding:15px 20px 15px 20px;
-   background-color: cornflowerblue;
+   background:linear-gradient(90deg,#64b3f4,#55e7fc);
    
 }
 
 .operations{
    padding:15px 20px 15px 20px;
-   background-color: rgb(141, 109, 172);
+   background:linear-gradient(90deg,#c2e59c,#64b3f4);
    
 }
 .numbers_0{
     grid-column-start: 1;
     grid-column-end: 3;
-   background-color: cornflowerblue;
+   background:linear-gradient(90deg,#64b3f4,#55e7fc)
    
 
+}
+.operations:focus{
+    background: 	rgb(24 132 169);
 }
